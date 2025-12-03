@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TreeCube — Главная</title>
+  <meta name="description" content="TreeCube — закрытый Minecraft-проект контент‑мейкеров. Новости, состав, медиа и подключение к серверу." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#060607; --card:#0f1113; --muted:#9aa6b2; --accent:#ff7a1c; --accent-2:#6bdcff; --glass:rgba(255,255,255,0.03);
+      --maxw:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;color:#e8eef6;background:linear-gradient(180deg,#050506 0%, #071018 100%)}
+    a{color:inherit}
+
+    /* NAV */
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:var(--maxw);margin:0 auto}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo img{height:56px;image-rendering:pixelated}
+    .nav .links{display:flex;gap:12px;align-items:center}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#ff9a3c);border:none;color:#0b0b0b}
+
+    /* HERO */
+    .hero{position:relative;overflow:hidden;border-radius:12px;margin:18px auto 6px;max-width:var(--maxw);padding:60px 28px;background:linear-gradient(180deg,rgba(255,122,28,0.06),rgba(107,220,255,0.02));box-shadow:0 8px 30px rgba(0,0,0,0.6);display:flex;gap:24px;align-items:center}
+    .hero-left{flex:1}
+    .hero h1{font-size:44px;margin:0 0 8px;letter-spacing:0.6px}
+    .hero p{margin:0;color:var(--muted);font-size:16px;max-width:700px}
+    .hero-cta{margin-top:18px;display:flex;gap:12px}
+
+    /* hero visual */
+    .hero-visual{width:360px;height:220px;border-radius:10px;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.03)}
+    .hero-visual img{max-width:100%;max-height:100%;object-fit:cover}
+
+    /* LAYOUT */
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:0 20px}
+    .cols{display:grid;grid-template-columns:1fr 360px;gap:22px}
+    @media (max-width:980px){.cols{grid-template-columns:1fr}.hero{flex-direction:column}.hero-visual{width:100%;height:220px}}
+
+    /* PLAYERS */
+    .panel{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+    .section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .search{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+
+    .players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+    .player{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.02);transition:transform .18s,box-shadow .18s}
+    .player:hover{transform:translateY(-6px);box-shadow:0 8px 28px rgba(0,0,0,0.55);border-color:rgba(107,220,255,0.08)}
+    .player .avatar{width:56px;height:56px;border-radius:8px;overflow:hidden;flex-shrink:0}
+    .player .avatar img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
+    .player .meta{display:flex;flex-direction:column}
+    .nick{font-weight:700}
+    .real{color:var(--muted);font-size:13px}
+    .copy{margin-left:auto;padding:6px 8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);cursor:pointer}
+
+    /* SIDEBAR */
+    .sidebar .card{margin-bottom:12px}
+    .stat{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02)}
+
+    /* FOOTER */
+    footer{margin-top:40px;padding:28px;text-align:center;color:var(--muted);opacity:0.9}
+
+    /* small UI */
+    .tag{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:13px}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
+
+    /* subtle animation */
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+    .logo img{animation:floaty 6s ease-in-out infinite}
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="logo">
+      <img src="/mnt/data/e2e68e11-232f-428c-8773-413f8880b090.png" alt="TC2 logo">
+      <div>
+        <div style="font-weight:800;font-size:18px">TreeCube</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:2px">Проект контент‑мейкеров</div>
+      </div>
+    </div>
+    <div class="links">
+      <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">О проекте</button>
+      <button class="btn" onclick="document.getElementById('players').scrollIntoView({behavior:'smooth'})">Игроки</button>
+      <a class="btn" href="#" onclick="alert('Подключение: позже')">Играть</a>
+      <button class="btn primary" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">Присоединиться</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="hero-left">
+      <h1>TreeCube — мир контента и историй</h1>
+      <p>Закрытый Minecraft‑проект, где играют только контент‑мейкеры. Сезоны, события и уникальные проекты — всё в одном месте.</p>
+      <div class="hero-cta">
+        <button class="btn primary" onclick="document.getElementById('players').scrollIntoView({behavior:'smooth'})">Посмотреть игроков</button>
+        <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Узнать больше</button>
+      </div>
+
+      <div style="margin-top:18px;display:flex;gap:10px;align-items:center">
+        <div class="pill">Сезон 2 завершён</div>
+        <div class="tag">Автор арта: <a href="https://t.me/moupupsiku" target="_blank" style="color:var(--accent-2)">BaLerA_</a></div>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden>
+      <img src="https://i.imgur.com/qnuQ5mg.png" alt="hero visual">
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="cols">
+      <section>
+
+        <!-- ABOUT -->
+
+<section id="videos" class="panel" style="margin-bottom:18px; padding:20px; overflow:hidden; border-radius:12px;">
+  <h3 style="margin:0 0 12px; text-align:center; font-size:22px; font-weight:700">Видеоролики по проекту</h3>
+  <div class="wrapper" style="width:100%; height:220px; overflow:hidden; border-radius:12px; padding:10px; background:rgba(255,255,255,0.02); box-shadow:0 0 20px rgba(0,0,0,0.3);">
+      <marquee id="slider" direction="left" scrollamount="10" style="width:100%; height:100%; display:flex; align-items:center;">
+          <div class="images" id="imgBox" style="display:flex; gap:40px; align-items:center;">
+
+              <!-- обложки -->
+              <img decoding="async" src="img\oblochki\obl1.jpg" alt="video1" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl2.jpg" alt="video2" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl3.jpg" alt="video3" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl4.jpg" alt="video4" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl5.jpg" alt="video5" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl6.jpg" alt="video6" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl7.jpg" alt="video7" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl8.jpg" alt="video8" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl9.jpg" alt="video9" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl10.jpg" alt="video10" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl11.jpg" alt="video11" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl12.jpg" alt="video12" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl13.jpg" alt="video13" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl14.jpg" alt="video14" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl15.jpg" alt="video15" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl16.jpg" alt="video16" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl17.jpg" alt="video17" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+              <img decoding="async" src="img\oblochki\obl18.jpg" alt="video18" class="img" style="width:260px; height:160px; border-radius:12px; object-fit:cover; cursor:pointer; transition:0.5s;">
+          </div>
+      </marquee>
+  </div>
+</section>
+        <div id="about" class="panel" style="margin-bottom:18px">
+          <div class="section-title">
+            <h3 style="margin:0">О проекте</h3>
+            <div style="color:var(--muted);font-size:13px">Уникальная площадка для создателей</div>
+          </div>
+          <p style="color:var(--muted);margin:0 0 8px">TreeCube — закрытое сообщество контент‑мейкеров: стримеры, ютуберы и создатели роликов объединяются в одном майнкрафт-мире. Наша цель — давать интересный игровой контент, поддерживать креатив и устраивать масштабные события.</p>
+        </div>
+
+        <!-- PLAYERS -->
+        <div id="players" class="panel">
+          <div class="section-title">
+            <h3 style="margin:0">🔖 Состав игроков</h3>
+            <input id="search" class="search" placeholder="Поиск по нику или имени..." />
+          </div>
+
+          <div style="margin-top:12px">
+            <div style="font-weight:700;margin-bottom:8px;color:var(--accent-2)">Владелец / Главный админ</div>
+            <div class="players-grid" id="players-grid">
+              <!-- players will be inserted here by JS -->
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="card panel">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-size:13px;color:var(--muted)">IP</div>
+              <div style="font-weight:800">play.treecube.ru</div>
+            </div>
+            <div>
+              <div style="font-size:13px;color:var(--muted)">Онлайн</div>
+              <div id="onlineCount" style="font-weight:800">—</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card panel">
+          <div style="font-weight:700;margin-bottom:8px">Контакты</div>
+          <div style="color:var(--muted);font-size:14px">Владелец: 0TVECHAU — Отвечаю<br></div>
+        </div>
+
+        <div class="card panel">
+          <div style="font-weight:700;margin-bottom:10px">Быстро</div>
+          <div class="stat"><div>Правила</div><div style="color:var(--muted)">скоро</div></div>
+          <div class="stat" style="margin-top:8px"><div>Гайды</div><div style="color:var(--muted)">скоро</div></div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- JOIN / FOOTER CTA -->
+    <section id="join" style="margin-top:28px" class="panel">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <div>
+          <div style="font-size:18px;font-weight:700">Хочешь присоединиться?</div>
+          <div style="color:var(--muted);margin-top:6px">Следи за набором — объявления будут в новостях и в нашем Discord.</div>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn" onclick="alert('Открытие набора — позже')">Новости</button>
+          <button class="btn primary" onclick="alert('Перейти в Discord — позже')">Discord</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © TreeCube — проект контент‑мейкеров. Список игроков и новости обновляются вручную.
+  </footer>
+
+  <script>
+    // full player list (english nicks used for mineskin)
+    const players = [
+      {nick:'0TVECHAU',real:'Отвечаю',role:'Владелец'},
+      {nick:'megatntmega',real:'Радомир',role:'Тех.админ'},
+      {nick:'7Neriys',real:'Нейрус',role:'Тех.админ'},
+      {nick:'MineKent_',real:'МайнКент',role:'Тех.админ'},
+      // старички
+      {nick:'ARTMine_',real:'АртМайн'},
+      {nick:'_GomeoStaz_',real:'Гомеостаз'},
+      {nick:'DenFv',real:'ДенФв'},
+      {nick:'zer0xikk',real:'Зерокс'},
+      {nick:'Kilka_v_HJlebe',real:'Килька'},
+      {nick:'KNOX_Play',real:'Кнокс'},
+      {nick:'MrKristafer',real:'Кристафер'},
+      {nick:'kykyruky',real:'Кукуруку'},
+      {nick:'MrSteak336',real:'МрСтейк'},
+      {nick:'NaKa7no',real:'Накано'},
+      {nick:'NorLiv',real:'Норлив'},
+      {nick:'MusteRand0mGMD',real:'Рандом'},
+      {nick:'Relight92',real:'Релайт'},
+      {nick:'TvanLegend_',real:'Тван'},
+      {nick:'FrogenixZhabight',real:'Фрогеникс'},
+      {nick:'Hozy_',real:'Хози'},
+      // новички
+      {nick:'Abobnlk',real:'Абобник'},
+      {nick:'Bulo4ka_aa',real:'Булочка'},
+      {nick:'BlHite4',real:'(Бл)Хайт'},
+      {nick:'VaynerCr',real:'Вайнер'},
+      {nick:'Wallyss',real:'Вэллис'},
+      {nick:'Windermake',real:'Виндермейк'},
+      {nick:'GhosterMorte',real:'Гоустер'},
+      {nick:'JesPerUwU',real:'Джеспер'},
+      {nick:'Z3phyr_OK',real:'Зефир'},
+      {nick:'ILIADOD',real:'Илиадод'},
+      {nick:'Knofbri',real:'Кнофбри'},
+      {nick:'fox_lend',real:'Лунфи'},
+      {nick:'maps_ik',real:'Мапс'},
+      {nick:'Meeersh',real:'Мирш'},
+      {nick:'Oreonsik',real:'Ореон'},
+      {nick:'MrOxyd',real:'Оксид'},
+      {nick:'Poombi',real:'Пумби'},
+      {nick:'Egorik_Pantaloni',real:'Панталон'},
+      {nick:'Sacredb_',real:'Сакред'},
+      {nick:'R_Snowy_',real:'Сноуви'},
+      {nick:'Mr_SlaymaN',real:'Сла‌ймэн'},
+      {nick:'Toni_Klark',real:'Тони Кларк'},
+      {nick:'FireLegend_',real:'Фаер'},
+      {nick:'Endiekey__',real:'Эндикей'},
+      {nick:'Ehnenra',real:'Эненра'},
+      {nick:'Yukins_',real:'Юкин'}
+    ];
+
+    function mkPlayerCard(p){
+      const div = document.createElement('div');div.className='player';
+      const av = document.createElement('div');av.className='avatar';
+      const img = document.createElement('img');
+      img.src = `https://mineskin.eu/helm/${encodeURIComponent(p.nick)}/100.png`;
+      img.alt = p.nick + ' skin';
+      av.appendChild(img);
+      const meta = document.createElement('div');meta.className='meta';
+      const nick = document.createElement('div');nick.className='nick';nick.textContent = p.nick;
+      const real = document.createElement('div');real.className='real';real.textContent = p.real || '';
+      meta.appendChild(nick);meta.appendChild(real);
+      const btn = document.createElement('button');btn.className='copy';btn.textContent='Копировать';
+      btn.addEventListener('click', async ()=>{
+        try{await navigator.clipboard.writeText(p.nick);btn.textContent='Скопировано';setTimeout(()=>btn.textContent='Копировать',1200)}catch(e){alert('Не удалось скопировать')}
+      });
+      div.appendChild(av);div.appendChild(meta);div.appendChild(btn);
+      return div;
+    }
+
+    const grid = document.getElementById('players-grid');
+    players.forEach(p=>grid.appendChild(mkPlayerCard(p)));
+
+    // search
+    document.getElementById('search').addEventListener('input', e=>{
+      const q = e.target.value.trim().toLowerCase();
+      const items = grid.querySelectorAll('.player');
+      items.forEach(node=>{
+        const nick = node.querySelector('.nick').textContent.toLowerCase();
+        const real = node.querySelector('.real').textContent.toLowerCase();
+        node.style.display = (nick.includes(q) || real.includes(q)) ? 'flex' : 'none';
+      });
+    });
+
+    // fake online count (placeholder) — replace with real API if available
+    document.getElementById('onlineCount').textContent = 'разное';
+
+  // --- MARQUEE SLIDER SCRIPT ---
+const marquee = document.getElementById("slider");
+const imgBox = document.getElementById("imgBox");
+
+function duplicateImages(){
+  const allImgs = imgBox.querySelectorAll("img");
+  allImgs.forEach(img=>{
+    const clone = img.cloneNode(true);
+    imgBox.appendChild(clone);
+  });
+}
+
+function resetImages(){
+  const originalImages = Array.from(imgBox.querySelectorAll("img")).slice(0,3);
+  imgBox.innerHTML = "";
+  originalImages.forEach(img=>imgBox.appendChild(img));
+  duplicateImages();
+  setupHoverPause();
+}
+
+duplicateImages();
+setInterval(duplicateImages,4000);
+setInterval(resetImages,30000);
+
+function setupHoverPause(){
+  const images=document.querySelectorAll('.img');
+  images.forEach(img=>{
+    img.addEventListener('mouseover',()=>marquee.stop());
+    img.addEventListener('mouseout',()=>marquee.start());
+  });
+}
+setupHoverPause();
+
+const observer = new MutationObserver(setupHoverPause);
+observer.observe(imgBox,{childList:true});
+
+</script>
+<script>
+  // slideshow hover animation
+  document.querySelectorAll('.video-item').forEach(item=>{
+    item.addEventListener('mouseover',()=>{
+      item.style.transform='scale(1.06) translateY(-10px)';
+      item.style.boxShadow='0 10px 30px rgba(0,0,0,0.55)';
+    });
+    item.addEventListener('mouseout',()=>{
+      item.style.transform='scale(1) translateY(0)';
+      item.style.boxShadow='0 6px 20px rgba(0,0,0,0.35)';
+    });
+  });
+
+  // autoplay scroll
+  const slider=document.getElementById('videoSlider');
+  let autoScroll=true;
+  let lastScroll=0;
+  function autoplay(){
+    if(!autoScroll) return;
+    slider.scrollLeft+=1;
+    if(slider.scrollLeft===lastScroll) slider.scrollLeft=0;
+    lastScroll=slider.scrollLeft;
+  }
+  let interval=setInterval(autoplay,10);
+
+  slider.addEventListener('mouseenter',()=>{autoScroll=false});
+  slider.addEventListener('mouseleave',()=>{autoScroll=true});
+</script>
+</body>
+</html>
