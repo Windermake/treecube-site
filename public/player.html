@@ -411,48 +411,9 @@
           </div>
         </div>
       </div>
-
-      <!-- ПРАВАЯ КОЛОНКА - СКИН -->
-      <div>
-        <div class="panel">
-          <h2 style="margin: 0 0 16px;">🧍 3D Скин игрока</h2>
-          <div class="skin-viewer-container">
-            <canvas id="skin-canvas"></canvas>
-          </div>
-          
-          <div class="skin-actions">
-            <button class="btn" onclick="toggleAnimation()" id="anim-toggle">⏸️ Пауза</button>
-            <button class="btn" onclick="toggleRotation()" id="rotate-toggle">🔄 Вращение</button>
-            <button class="btn" onclick="resetView()">↺ Сброс</button>
-            <button class="btn" onclick="downloadSkin()">💾 Скачать скин</button>
-          </div>
-          
-          <div class="controls-info">
-            <div class="control-item">🖱️ ЛКМ + перемещение — поворот</div>
-            <div class="control-item">🖱️ Колесико — приближение</div>
-            <div class="control-item">🖱️ ПКМ + перемещение — панорамирование</div>
-          </div>
-        </div>
-
-        <!-- ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ -->
-        <div class="panel" style="margin-top: 22px;">
-          <h3 style="margin: 0 0 12px;">📊 Статистика</h3>
-          <div style="color: var(--muted); font-size: 14px; line-height: 1.5;">
-            <p>Статистика игрока обновляется вручную администрацией проекта.</p>
-            <p>Для получения актуальной статистики свяжитесь с администрацией.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
   <footer style="margin-top: 40px; padding: 28px; text-align: center; color: var(--muted); opacity: 0.9;">
     © TreeCube — проект контент‑мейкеров. Профили обновляются вручную.
   </footer>
-
-  <!-- SKIN3D LIBRARY -->
-  <script src="https://cdn.jsdelivr.net/npm/skin3d@0.0.11/dist/skin3d.umd.js"></script>
-  
   <script>
     // Данные игроков
     const players = [
@@ -585,116 +546,6 @@
           videosGrid.appendChild(videoEl);
         });
       }
-    }
-
-    // Инициализация 3D скина с skin3d
-    function initSkinViewer() {
-      const canvas = document.getElementById('skin-canvas');
-      
-      // Создаем viewer с skin3d
-      viewer = new skin3d.View({
-        canvas: canvas,
-        width: canvas.parentElement.clientWidth,
-        height: 400,
-        skin: `https://mineskin.eu/skin/${encodeURIComponent(currentPlayer.nick)}`
-      });
-
-      // Настройки отображения
-      viewer.background = "#0f1113"; // Цвет фона как у панели
-      viewer.fov = 65; // Поле зрения
-      viewer.zoom = 0.9; // Отдаление камеры
-      
-      // Включаем автоповорот
-      viewer.autoRotate = true;
-      
-      // Добавляем анимацию ходьбы
-      viewer.animation = new skin3d.WalkingAnimation();
-      viewer.animation.speed = 2.5;
-      
-      // Настройка освещения
-      viewer.globalLight.intensity = 1.2;
-      viewer.cameraLight.intensity = 0.4;
-      
-      // Включаем контролы камеры
-      if (viewer.controls) {
-        viewer.controls.enableRotate = true;
-        viewer.controls.enableZoom = true;
-        viewer.controls.enablePan = true;
-        viewer.controls.rotateSpeed = 1.0;
-        viewer.controls.zoomSpeed = 1.5;
-      }
-
-      // Добавляем никнейм как тег (опционально)
-      // viewer.nameTag = new skin3d.NameTagObject(currentPlayer.nick, { 
-      //   textStyle: "white",
-      //   fontFamily: "Minecraft"
-      // });
-
-      // Обработка ошибок загрузки скина
-      const skinUrl = `https://mineskin.eu/skin/${encodeURIComponent(currentPlayer.nick)}`;
-      viewer.loadSkin(skinUrl).catch(err => {
-        console.warn('Ошибка загрузки скина с mineskin.eu:', err);
-        // Альтернативные источники
-        const altSkinUrl = `https://minotar.net/skin/${encodeURIComponent(currentPlayer.nick)}`;
-        viewer.loadSkin(altSkinUrl).catch(err2 => {
-          console.warn('Ошибка загрузки скина с minotar.net:', err2);
-          // Последний вариант
-          const finalSkinUrl = `https://crafatar.com/skins/${encodeURIComponent(currentPlayer.nick)}`;
-          viewer.loadSkin(finalSkinUrl).catch(err3 => {
-            console.error('Все источники скинов недоступны:', err3);
-          });
-        });
-      });
-    }
-
-    // Управление анимацией
-    function toggleAnimation() {
-      if (!viewer) return;
-      
-      isAnimating = !isAnimating;
-      const btn = document.getElementById('anim-toggle');
-      
-      if (isAnimating) {
-        viewer.animation = new skin3d.WalkingAnimation();
-        viewer.animation.speed = 2.5;
-        btn.textContent = '⏸️ Пауза';
-      } else {
-        viewer.animation = null;
-        btn.textContent = '▶️ Воспроизвести';
-      }
-    }
-
-    // Управление вращением
-    function toggleRotation() {
-      if (!viewer) return;
-      
-      isRotating = !isRotating;
-      const btn = document.getElementById('rotate-toggle');
-      
-      viewer.autoRotate = isRotating;
-      
-      if (isRotating) {
-        btn.textContent = '🔄 Вращение';
-      } else {
-        btn.textContent = '⏹️ Стоп';
-      }
-    }
-
-    // Сброс вида
-    function resetView() {
-      if (!viewer) return;
-      
-      // Сбрасываем позицию камеры
-      if (viewer.controls) {
-        viewer.controls.reset();
-      }
-      
-      // Сбрасываем зум
-      viewer.zoom = 0.9;
-      
-      // Включаем анимацию и вращение обратно
-      if (!isAnimating) toggleAnimation();
-      if (!isRotating) toggleRotation();
     }
 
     // Скачивание скина
