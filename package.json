@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "node-fetch": "^3.3.2",
+    "skin3d": "^0.0.12",
+    "skinview3d": "^3.4.1"
   }
 }

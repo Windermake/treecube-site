@@ -346,33 +346,35 @@ const observer = new MutationObserver(setupHoverPause);
 observer.observe(imgBox,{childList:true});
 
 </script>
-<script>
-  // slideshow hover animation
-  document.querySelectorAll('.video-item').forEach(item=>{
+  <script>
+    // slideshow hover animation
+    document.querySelectorAll('.video-item').forEach(item=>{
     item.addEventListener('mouseover',()=>{
-      item.style.transform='scale(1.06) translateY(-10px)';
-      item.style.boxShadow='0 10px 30px rgba(0,0,0,0.55)';
+    item.style.transform='scale(1.06) translateY(-4px)';
+    item.style.boxShadow='0 10px 30px rgba(0,0,0,0.55)';
     });
     item.addEventListener('mouseout',()=>{
-      item.style.transform='scale(1) translateY(0)';
-      item.style.boxShadow='0 6px 20px rgba(0,0,0,0.35)';
+    item.style.transform='scale(1) translateY(0)';
+    item.style.boxShadow='0 6px 20px rgba(0,0,0,0.35)';
     });
-  });
+    });
 
-  // autoplay scroll
-  const slider=document.getElementById('videoSlider');
-  let autoScroll=true;
-  let lastScroll=0;
-  function autoplay(){
+
+    // autoplay scroll
+    const slider=document.getElementById('videoSlider');
+    let autoScroll=true;
+    let lastScroll=0;
+    function autoplay(){
     if(!autoScroll) return;
-    slider.scrollLeft+=1;
+    slider.scrollLeft+=1.2;
     if(slider.scrollLeft===lastScroll) slider.scrollLeft=0;
     lastScroll=slider.scrollLeft;
-  }
-  let interval=setInterval(autoplay,10);
+    }
+    let interval=setInterval(autoplay,20);
 
-  slider.addEventListener('mouseenter',()=>{autoScroll=false});
-  slider.addEventListener('mouseleave',()=>{autoScroll=true});
-</script>
+
+    slider.addEventListener('mouseenter',()=>{autoScroll=false});
+    slider.addEventListener('mouseleave',()=>{autoScroll=true});
+  </script>
 </body>
 </html>

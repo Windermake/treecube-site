@@ -12,8 +12,9 @@
       --maxw:1200px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;color:#e8eef6;background:linear-gradient(180deg,#050506 0%, #071018 100%)}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;color:#e8eef6;background:linear-gradient(180deg,#050506 0%, #0f2233 100%);background-attachment: fixed;}
     a{color:inherit}
+    
 
     /* NAV */
     .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:var(--maxw);margin:0 auto}
@@ -22,7 +23,7 @@
     .nav .links{display:flex;gap:12px;align-items:center}
     .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer}
     .btn.primary{background:linear-gradient(90deg,var(--accent),#ff9a3c);border:none;color:#0b0b0b}
-
+    
     /* HERO */
     .hero{position:relative;overflow:hidden;border-radius:12px;margin:18px auto 6px;max-width:var(--maxw);padding:60px 28px;background:linear-gradient(180deg,rgba(255,122,28,0.06),rgba(107,220,255,0.02));box-shadow:0 8px 30px rgba(0,0,0,0.6);display:flex;gap:24px;align-items:center}
     .hero-left{flex:1}
@@ -69,6 +70,43 @@
     @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
     .logo img{animation:floaty 6s ease-in-out infinite}
 
+    .slider {
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+    position: relative;
+    }
+
+    .slide-track {
+        display: flex;
+        gap: 40px;
+        animation: scroll 40s linear infinite;
+        width: 736px;
+    }
+
+    .slide-track:hover {
+        animation-play-state: paused;
+    }
+
+    /* скорость – регулируй временем */
+    @keyframes scroll {
+        0% {transform: translateX(0);}
+        100% {transform: translateX(-500%);} 
+    }
+
+    .img {
+        width: 260px;
+        height: 160px;
+        border-radius: 12px;
+        object-fit: cover;
+        transition: .3s;
+        cursor: pointer;
+    }
+    .img:hover {
+        transform: scale(1.15);
+        z-index: 10;
+    }
+
   </style>
 </head>
 <body>
@@ -107,7 +145,7 @@
     </div>
 
     <div class="hero-visual" aria-hidden>
-      <img src="img/TC3.png" alt="hero visual">
+      <img src="img\TC3.png" alt="hero visual">
     </div>
   </header>
 
@@ -116,6 +154,33 @@
       <section>
 
         <!-- ABOUT -->
+
+<section id="videos" class="panel" style="margin-bottom:18px; padding:20px; overflow:hidden; border-radius:12px;">
+  <h3 style="margin:0 0 12px; text-align:center; font-size:22px; font-weight:700">Видеоролики по проекту</h3>
+<div class="slider">
+  <div class="slide-track">
+      <img src="img/oblochki/obl1.jpg" class="img">
+      <img src="img/oblochki/obl2.jpg" class="img">
+      <img src="img/oblochki/obl3.jpg" class="img">
+      <img src="img/oblochki/obl4.jpg" class="img">
+      <img src="img/oblochki/obl5.jpg" class="img">
+      <img src="img/oblochki/obl6.jpg" class="img">
+      <img src="img/oblochki/obl7.jpg" class="img">
+      <img src="img/oblochki/obl8.jpg" class="img">
+      <img src="img/oblochki/obl9.jpg" class="img">
+      <img src="img/oblochki/obl10.jpg" class="img">
+      <img src="img/oblochki/obl11.jpg" class="img">
+      <img src="img/oblochki/obl12.jpg" class="img">
+      <img src="img/oblochki/obl13.jpg" class="img">
+      <img src="img/oblochki/obl14.jpg" class="img">
+      <img src="img/oblochki/obl15.jpg" class="img">
+      <img src="img/oblochki/obl16.jpg" class="img">
+      <img src="img/oblochki/obl17.jpg" class="img">
+      <img src="img/oblochki/obl18.jpg" class="img">
+  </div>
+</div>
+
+</section>
         <div id="about" class="panel" style="margin-bottom:18px">
           <div class="section-title">
             <h3 style="margin:0">О проекте</h3>
@@ -132,6 +197,7 @@
           </div>
 
           <div style="margin-top:12px">
+            <div style="font-weight:700;margin-bottom:8px;color:var(--accent-2)">Владелец / Главный админ</div>
             <div class="players-grid" id="players-grid">
               <!-- players will be inserted here by JS -->
             </div>
@@ -200,46 +266,29 @@
       {nick:'ARTMine_',real:'АртМайн'},
       {nick:'_GomeoStaz_',real:'Гомеостаз'},
       {nick:'DenFv',real:'ДенФв'},
-      {nick:'zer0xikk',real:'Зерокс'},
       {nick:'Kilka_v_HJlebe',real:'Килька'},
       {nick:'KNOX_Play',real:'Кнокс'},
-      {nick:'MrKristafer',real:'Кристафер'},
       {nick:'kykyruky',real:'Кукуруку'},
       {nick:'MrSteak336',real:'МрСтейк'},
-      {nick:'NaKa7no',real:'Накано'},
-      {nick:'NorLiv',real:'Норлив'},
       {nick:'MusteRand0mGMD',real:'Рандом'},
       {nick:'Relight92',real:'Релайт'},
       {nick:'TvanLegend_',real:'Тван'},
       {nick:'FrogenixZhabight',real:'Фрогеникс'},
-      {nick:'Hozy_',real:'Хози'},
       // новички
       {nick:'Abobnlk',real:'Абобник'},
       {nick:'Bulo4ka_aa',real:'Булочка'},
       {nick:'BlHite4',real:'(Бл)Хайт'},
-      {nick:'VaynerCr',real:'Вайнер'},
-      {nick:'Wallyss',real:'Вэллис'},
       {nick:'Windermake',real:'Виндермейк'},
-      {nick:'GhosterMorte',real:'Гоустер'},
-      {nick:'JesPerUwU',real:'Джеспер'},
       {nick:'Z3phyr_OK',real:'Зефир'},
       {nick:'ILIADOD',real:'Илиадод'},
       {nick:'Knofbri',real:'Кнофбри'},
-      {nick:'fox_lend',real:'Лунфи'},
       {nick:'maps_ik',real:'Мапс'},
-      {nick:'Meeersh',real:'Мирш'},
       {nick:'Oreonsik',real:'Ореон'},
-      {nick:'MrOxyd',real:'Оксид'},
-      {nick:'Poombi',real:'Пумби'},
-      {nick:'Egorik_Pantaloni',real:'Панталон'},
-      {nick:'Sacredb_',real:'Сакред'},
-      {nick:'R_Snowy_',real:'Сноуви'},
-      {nick:'Mr_SlaymaN',real:'Сла\u200cймэн'},
-      {nick:'Toni_Klark',real:'Тони Кларк'},
+      {nick:'Egorik_Pantaloni',real:'Панталон'},,
+      {nick:'Mr_SlaymaN',real:'Сла‌ймэн'},
       {nick:'FireLegend_',real:'Фаер'},
       {nick:'Endiekey__',real:'Эндикей'},
       {nick:'Ehnenra',real:'Эненра'},
-      {nick:'Yukins_',real:'Юкин'}
     ];
 
     function mkPlayerCard(p){
@@ -258,6 +307,7 @@
         try{await navigator.clipboard.writeText(p.nick);btn.textContent='Скопировано';setTimeout(()=>btn.textContent='Копировать',1200)}catch(e){alert('Не удалось скопировать')}
       });
       div.appendChild(av);div.appendChild(meta);div.appendChild(btn);
+      div.onclick = ()=>location.href = `player.html?nick=${p.nick}`;
       return div;
     }
 
@@ -278,6 +328,72 @@
     // fake online count (placeholder) — replace with real API if available
     document.getElementById('onlineCount').textContent = 'разное';
 
+  // --- MARQUEE SLIDER SCRIPT ---
+const marquee = document.getElementById("slider");
+const imgBox = document.getElementById("imgBox");
+
+function duplicateImages(){
+  const allImgs = imgBox.querySelectorAll("img");
+  allImgs.forEach(img=>{
+    const clone = img.cloneNode(true);
+    imgBox.appendChild(clone);
+  });
+}
+
+function resetImages(){
+  const originalImages = Array.from(imgBox.querySelectorAll("img")).slice(0,3);
+  imgBox.innerHTML = "";
+  originalImages.forEach(img=>imgBox.appendChild(img));
+  duplicateImages();
+  setupHoverPause();
+}
+
+duplicateImages();
+setInterval(duplicateImages,4000);
+setInterval(resetImages,30000);
+
+function setupHoverPause(){
+  const images=document.querySelectorAll('.img');
+  images.forEach(img=>{
+    img.addEventListener('mouseover',()=>marquee.stop());
+    img.addEventListener('mouseout',()=>marquee.start());
+  });
+}
+setupHoverPause();
+
+const observer = new MutationObserver(setupHoverPause);
+observer.observe(imgBox,{childList:true});
+
+</script>
+  <script>
+    // slideshow hover animation
+    document.querySelectorAll('.video-item').forEach(item=>{
+    item.addEventListener('mouseover',()=>{
+    item.style.transform='scale(1.06) translateY(-4px)';
+    item.style.boxShadow='0 10px 30px rgba(0,0,0,0.55)';
+    });
+    item.addEventListener('mouseout',()=>{
+    item.style.transform='scale(1) translateY(0)';
+    item.style.boxShadow='0 6px 20px rgba(0,0,0,0.35)';
+    });
+    });
+
+
+    // autoplay scroll
+    const slider=document.getElementById('videoSlider');
+    let autoScroll=true;
+    let lastScroll=0;
+    function autoplay(){
+    if(!autoScroll) return;
+    slider.scrollLeft+=1.2;
+    if(slider.scrollLeft===lastScroll) slider.scrollLeft=0;
+    lastScroll=slider.scrollLeft;
+    }
+    let interval=setInterval(autoplay,20);
+
+
+    slider.addEventListener('mouseenter',()=>{autoScroll=false});
+    slider.addEventListener('mouseleave',()=>{autoScroll=true});
   </script>
 </body>
 </html>
