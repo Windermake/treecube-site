@@ -32,7 +32,7 @@
     .hero-cta{margin-top:18px;display:flex;gap:12px}
 
     /* hero visual */
-    .hero-visual{width:360px;height:220px;border-radius:10px;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.03)}
+    .hero-visual{width:360px;height:204px;border-radius:10px;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.03)}
     .hero-visual img{max-width:100%;max-height:100%;object-fit:cover}
 
     /* LAYOUT */
@@ -45,7 +45,7 @@
     .section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
     .search{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
 
-    .players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+    .players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
     .player{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.02);transition:transform .18s,box-shadow .18s}
     .player:hover{transform:translateY(-6px);box-shadow:0 8px 28px rgba(0,0,0,0.55);border-color:rgba(107,220,255,0.08)}
     .player .avatar{width:56px;height:56px;border-radius:8px;overflow:hidden;flex-shrink:0}
@@ -69,44 +69,28 @@
     /* subtle animation */
     @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
     .logo img{animation:floaty 6s ease-in-out infinite}
-
-    .slider {
-    overflow: hidden;
-    width: 100%;
-    height: 200px;
-    position: relative;
-    }
-
-    .slide-track {
-        display: flex;
-        gap: 40px;
-        animation: scroll 40s linear infinite;
-        width: 736px;
-    }
-
-    .slide-track:hover {
-        animation-play-state: paused;
-    }
+    .slider {overflow: hidden;width: 100%;height: 200px;position: relative;}
+    .slide-track {display: flex;gap: 40px;animation: scroll 40s linear infinite;width: 736px;}
+    .slide-track:hover {animation-play-state: paused;}
 
     /* скорость – регулируй временем */
-    @keyframes scroll {
-        0% {transform: translateX(0);}
-        100% {transform: translateX(-500%);} 
+    @keyframes scroll {0% {transform: translateX(0);}100% {transform: translateX(-500%);} }
+
+    .img {width: 260px;height: 160px;border-radius: 12px;object-fit: cover;transition: .3s;cursor: pointer;}
+    .img:hover {transform: scale(1.15);z-index: 10;}
+    /* Ограничение первоначальной видимости списка игроков */
+    .players-grid {
+      max-height: 370px;
+      overflow: hidden;
+      position: relative;
+      transition: max-height .6s ease; /* плавное изменение */
     }
 
-    .img {
-        width: 260px;
-        height: 160px;
-        border-radius: 12px;
-        object-fit: cover;
-        transition: .3s;
-        cursor: pointer;
+    .players-grid.expanded {
+      max-height: 2000px; /* достаточно чтобы уместить весь список */
     }
-    .img:hover {
-        transform: scale(1.15);
-        z-index: 10;
-    }
-
+    .show-more-btn {margin: 12px auto 0;padding: 10px 16px;background: rgba(255,255,255,0.05);border: 1px solid rgba(255,255,255,0.15);border-radius: 8px;display: block;cursor: pointer;font-weight: 600;color: #fff;transition: .25s;}
+    .show-more-btn:hover {background: rgba(255,255,255,0.12);transform: translateY(-2px);}
   </style>
 </head>
 <body>
@@ -155,10 +139,10 @@
 
         <!-- ABOUT -->
 
-<section id="videos" class="panel" style="margin-bottom:18px; padding:20px; overflow:hidden; border-radius:12px;">
-  <h3 style="margin:0 0 12px; text-align:center; font-size:22px; font-weight:700">Видеоролики по проекту</h3>
+<section id="videos" class="panel" style="margin-bottom:18px; padding:1px; overflow:hidden; border-radius:12px;">
+  <h3 style="margin:0 0 px; text-align:center; font-size:22px; font-weight:700">Видеоролики по проекту</h3>
 <div class="slider">
-  <div class="slide-track">
+  <div class="slide-track" style="margin-top: 15px;">
       <img src="img/oblochki/obl1.jpg" class="img">
       <img src="img/oblochki/obl2.jpg" class="img">
       <img src="img/oblochki/obl3.jpg" class="img">
@@ -186,7 +170,7 @@
             <h3 style="margin:0">О проекте</h3>
             <div style="color:var(--muted);font-size:13px">Уникальная площадка для создателей</div>
           </div>
-          <p style="color:var(--muted);margin:0 0 8px">TreeCube — закрытое сообщество контент‑мейкеров: стримеры, ютуберы и создатели роликов объединяются в одном майнкрафт-мире. Наша цель — давать интересный игровой контент, поддерживать креатив и устраивать масштабные события.</p>
+          <p style="color:var(--muted);margin:0 0 8px">TreeCube — закрытое сообщество контент‑мейкеров: стримеры и ютуберы объединяются в одной сфере. Наша цель — давать интересный игровой контент, поддерживать креатив как художников, так и разные другие творчиске направления и устраивать масштабные события.</p>
         </div>
 
         <!-- PLAYERS -->
@@ -197,12 +181,12 @@
           </div>
 
           <div style="margin-top:12px">
-            <div style="font-weight:700;margin-bottom:8px;color:var(--accent-2)">Владелец / Главный админ</div>
-            <div class="players-grid" id="players-grid">
-              <!-- players will be inserted here by JS -->
-            </div>
-          </div>
+              <div style="font-weight:700;margin-bottom:8px;color:var(--accent-2)">Владелец / Главный админ</div>
 
+              <div class="players-grid collapsed" id="players-grid"></div>
+
+              <button id="togglePlayers" class="show-more-btn">Показать всех</button>
+          </div>
         </div>
 
       </section>
@@ -212,12 +196,12 @@
         <div class="card panel">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <div>
-              <div style="font-size:13px;color:var(--muted)">IP</div>
-              <div style="font-weight:800">play.treecube.ru</div>
+              <div style="font-size:13px;color:var(--muted)">Официальное сообщество</div>
+              <div style="font-weight:800"><a href="https://t.me/treecube">https://t.me/treecube</a></div>
             </div>
             <div>
-              <div style="font-size:13px;color:var(--muted)">Онлайн</div>
-              <div id="onlineCount" style="font-weight:800">—</div>
+              <div style="font-size:13px;color:var(--muted)"><img style="width:30%; border-radius: 20%; margin-left: 70%;" src="img\logo_TG.jpg"></div>
+
             </div>
           </div>
         </div>
@@ -229,8 +213,8 @@
 
         <div class="card panel">
           <div style="font-weight:700;margin-bottom:10px">Быстро</div>
-          <div class="stat"><div>Правила</div><div style="color:var(--muted)">скоро</div></div>
-          <div class="stat" style="margin-top:8px"><div>Гайды</div><div style="color:var(--muted)">скоро</div></div>
+          <div class="stat"><div>История проекта</div><div style="color:var(--muted)">скоро</div></div>
+          <div class="stat" style="margin-top:8px"><div>АртБук</div><div style="color:var(--muted)">скоро</div></div>
         </div>
       </aside>
     </div>
@@ -255,41 +239,42 @@
     © TreeCube — проект контент‑мейкеров. Список игроков и новости обновляются вручную.
   </footer>
 
+  <!-- ПОДКЛЮЧАЕМ ВНЕШНИЙ ФАЙЛ С ДАННЫМИ -->
+  <script src="js/players-data.js"></script>
+  
   <script>
-    // full player list (english nicks used for mineskin)
-    const players = [
-      {nick:'0TVECHAU',real:'Отвечаю',role:'Владелец'},
-      {nick:'megatntmega',real:'Радомир',role:'Тех.админ'},
-      {nick:'7Neriys',real:'Нейрус',role:'Тех.админ'},
-      {nick:'MineKent_',real:'МайнКент',role:'Тех.админ'},
-      // старички
-      {nick:'ARTMine_',real:'АртМайн'},
-      {nick:'_GomeoStaz_',real:'Гомеостаз'},
-      {nick:'DenFv',real:'ДенФв'},
-      {nick:'Kilka_v_HJlebe',real:'Килька'},
-      {nick:'KNOX_Play',real:'Кнокс'},
-      {nick:'kykyruky',real:'Кукуруку'},
-      {nick:'MrSteak336',real:'МрСтейк'},
-      {nick:'MusteRand0mGMD',real:'Рандом'},
-      {nick:'Relight92',real:'Релайт'},
-      {nick:'TvanLegend_',real:'Тван'},
-      {nick:'FrogenixZhabight',real:'Фрогеникс'},
-      // новички
-      {nick:'Abobnlk',real:'Абобник'},
-      {nick:'Bulo4ka_aa',real:'Булочка'},
-      {nick:'BlHite4',real:'(Бл)Хайт'},
-      {nick:'Windermake',real:'Виндермейк'},
-      {nick:'Z3phyr_OK',real:'Зефир'},
-      {nick:'ILIADOD',real:'Илиадод'},
-      {nick:'Knofbri',real:'Кнофбри'},
-      {nick:'maps_ik',real:'Мапс'},
-      {nick:'Oreonsik',real:'Ореон'},
-      {nick:'Egorik_Pantaloni',real:'Панталон'},,
-      {nick:'Mr_SlaymaN',real:'Сла‌ймэн'},
-      {nick:'FireLegend_',real:'Фаер'},
-      {nick:'Endiekey__',real:'Эндикей'},
-      {nick:'Ehnenra',real:'Эненра'},
-    ];
+    // Проверяем, что данные загружены
+    if (typeof players === 'undefined') {
+      console.error('Файл players-data.js не загружен или не содержит данных');
+      // Создаем временный массив для отображения
+      var players = [
+        {nick:'0TVECHAU',real:'Отвечаю',role:'Владелец'},
+        {nick: 'endiekey', real: 'Эндикей', role: 'Участник'},
+        {nick: 'Кукуруку', real: 'Кукуруку', role: 'Участник'}
+      ];
+    }
+
+    const gridPlayers = document.getElementById("players-grid");
+    const toggleBtn   = document.getElementById("togglePlayers");
+
+    toggleBtn.addEventListener("click", () => {
+      
+      const expanded = gridPlayers.classList.toggle("expanded");
+
+      if (expanded) {
+        toggleBtn.textContent = "Скрыть ▲";
+
+        // плавная автоматическая прокрутка вниз к блоку
+        setTimeout(()=>{ 
+          gridPlayers.scrollIntoView({behavior:'smooth',block:'start'}); 
+        },200);
+
+      } else {
+        toggleBtn.textContent = "Показать всех ▼";
+        gridPlayers.scrollIntoView({behavior:'smooth',block:'start'});
+      }
+
+    });
 
     function mkPlayerCard(p){
       const div = document.createElement('div');div.className='player';
@@ -297,22 +282,68 @@
       const img = document.createElement('img');
       img.src = `https://mineskin.eu/helm/${encodeURIComponent(p.nick)}/100.png`;
       img.alt = p.nick + ' skin';
+      img.onerror = function() {
+        this.src = `https://minotar.net/helm/${encodeURIComponent(p.nick)}`;
+      };
       av.appendChild(img);
       const meta = document.createElement('div');meta.className='meta';
       const nick = document.createElement('div');nick.className='nick';nick.textContent = p.nick;
       const real = document.createElement('div');real.className='real';real.textContent = p.real || '';
       meta.appendChild(nick);meta.appendChild(real);
       const btn = document.createElement('button');btn.className='copy';btn.textContent='Копировать';
-      btn.addEventListener('click', async ()=>{
-        try{await navigator.clipboard.writeText(p.nick);btn.textContent='Скопировано';setTimeout(()=>btn.textContent='Копировать',1200)}catch(e){alert('Не удалось скопировать')}
+      btn.addEventListener('click', async (e)=>{
+        e.stopPropagation(); // Предотвращаем переход на профиль
+        try{
+          await navigator.clipboard.writeText(p.nick);
+          btn.textContent='Скопировано';
+          setTimeout(()=>btn.textContent='Копировать',1200);
+        }catch(e){
+          alert('Не удалось скопировать');
+        }
       });
       div.appendChild(av);div.appendChild(meta);div.appendChild(btn);
       div.onclick = ()=>location.href = `player.html?nick=${p.nick}`;
       return div;
     }
 
+    // Сортируем игроков: сначала владельцы/админы, потом остальные
+    function sortPlayers(playersArray) {
+      return playersArray.sort((a, b) => {
+        // Приоритет ролей
+        const roleOrder = {
+          'Владелец': 1,
+          'Тех.админ': 2,
+          'Админ': 3,
+          'Модератор': 4,
+          'Участник': 5
+        };
+        
+        const roleA = roleOrder[a.role || 'Участник'] || 5;
+        const roleB = roleOrder[b.role || 'Участник'] || 5;
+        
+        if (roleA !== roleB) {
+          return roleA - roleB;
+        }
+        
+        // Если роли одинаковые, сортируем по нику
+        return a.nick.localeCompare(b.nick);
+      });
+    }
+
+    // Отображаем отсортированных игроков
     const grid = document.getElementById('players-grid');
-    players.forEach(p=>grid.appendChild(mkPlayerCard(p)));
+    const sortedPlayers = sortPlayers(players);
+    
+    // Сначала добавляем владельца отдельно
+    const ownerSection = document.querySelector('[style*="font-weight:700;margin-bottom:8px;color:var(--accent-2)"]');
+    if (ownerSection) {
+      ownerSection.innerHTML = 'Владелец';
+    }
+    
+    // Добавляем всех игроков
+    sortedPlayers.forEach(p => {
+      grid.appendChild(mkPlayerCard(p));
+    });
 
     // search
     document.getElementById('search').addEventListener('input', e=>{
@@ -390,8 +421,6 @@ observer.observe(imgBox,{childList:true});
     lastScroll=slider.scrollLeft;
     }
     let interval=setInterval(autoplay,20);
-
-
     slider.addEventListener('mouseenter',()=>{autoScroll=false});
     slider.addEventListener('mouseleave',()=>{autoScroll=true});
   </script>
