@@ -7,387 +7,68 @@
   <meta name="description" content="Профиль игрока TreeCube" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'Minecraft';
-      src: url('https://cdn.jsdelivr.net/npm/typeface-minecraft@0.0.1/files/minecraft.woff2') format('woff2');
+    @font-face {font-family: 'Minecraft';src: url('https://cdn.jsdelivr.net/npm/typeface-minecraft@0.0.1/files/minecraft.woff2') format('woff2');
     }
-
-    :root {
-      --bg: #060607;
-      --card: #0f1113;
-      --muted: #9aa6b2;
-      --accent: #ff7a1c;
-      --accent-2: #6bdcff;
-      --glass: rgba(255, 255, 255, 0.03);
-      --maxw: 1200px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
-      color: #e8eef6;
-      background: linear-gradient(180deg, #050506 0%, #0f2233 100%);
-      background-attachment: fixed;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    :root {--bg: #060607;--card: #0f1113;--muted: #9aa6b2;--accent: #ff7a1c;--accent-2: #6bdcff;--glass: rgba(255, 255, 255, 0.03);--maxw: 1200px;}
+    * {box-sizing: border-box;}
+    html, body {height: 100%;margin: 0;font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;color: #e8eef6;background: linear-gradient(180deg, #050506 0%, #0f2233 100%);background-attachment: fixed;}
+    a {color: inherit;text-decoration: none;}
     .NameMC {border-radius: 8px;}
-    /* NAV */
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 24px;
-      max-width: var(--maxw);
-      margin: 0 auto;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-    }
-
-    .logo img {
-      height: 56px;
-      image-rendering: pixelated;
-    }
-
-    .btn {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      color: inherit;
-      transition: all 0.2s;
-    }
-
-    .btn:hover {
-      border-color: var(--accent-2);
-      background: rgba(107, 220, 255, 0.05);
-    }
-
-    .btn.primary {
-      background: linear-gradient(90deg, var(--accent), #ff9a3c);
-      border: none;
-      color: #0b0b0b;
-    }
-
-    .btn.primary:hover {
-      opacity: 0.9;
-    }
-
-    /* LAYOUT */
-    .wrap {
-      max-width: var(--maxw);
-      margin: 28px auto;
-      padding: 0 20px;
-    }
-
-    .cols {
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 22px;
-    }
-
-    @media (max-width: 980px) {
-      .cols {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* PANELS */
-    .panel {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-      padding: 24px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-    }
-    .panel1 {
-      margin-top: 10px;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-      padding: 7px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    /* PROFILE INFO */
-    .profile-header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-    }
-
-    .profile-avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 12px;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .profile-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      image-rendering: pixelated;
-    }
-
-    .profile-info h1 {
-      margin: 0 0 8px;
-      font-size: 32px;
-    }
-
-    .profile-role {
-      color: var(--accent-2);
-      font-weight: 600;
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
-
-    .profile-realname {
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    .skin-actions {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* STATS */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .stat-item {
-      padding: 12px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      transition: all 0.2s;
-    }
-
-    .stat-item:hover {
-      border-color: rgba(107, 220, 255, 0.1);
-      background: rgba(107, 220, 255, 0.03);
-    }
-
-    .stat-label {
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 4px;
-    }
-
-    .stat-value {
-      font-weight: 700;
-      font-size: 18px;
-    }
-
-    /* VIDEOS */
-    .videos-section {
-      margin-top: 30px;
-    }
-
-    .videos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .video-item {
-      border-radius: 10px;
-      overflow: hidden;
-      background: #000;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .video-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
-      border-color: var(--accent-2);
-    }
-
-    .video-thumbnail {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-    }
-
-    .video-title {
-      padding: 12px;
-      font-weight: 600;
-      color: #e8eef6;
-    }
-
-    /* LOADING */
-    .loading {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 400px;
-      font-size: 18px;
-      color: var(--muted);
-      gap: 20px;
-    }
-
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border: 4px solid rgba(107, 220, 255, 0.3);
-      border-top: 4px solid var(--accent-2);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* BACK BUTTON */
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
+    .nav {display: flex;align-items: center;justify-content: space-between;padding: 18px 24px;max-width: var(--maxw);margin: 0 auto;}
+    .logo {display: flex;align-items: center;gap: 12px;cursor: pointer;}
+    .logo img {height: 56px;image-rendering: pixelated;}
+    .btn {background: transparent;border: 1px solid rgba(255, 255, 255, 0.06);padding: 8px 12px;border-radius: 8px;font-weight: 600;cursor: pointer;color: inherit;transition: all 0.2s;}
+    .btn:hover {border-color: var(--accent-2);background: rgba(107, 220, 255, 0.05);}
+    .btn.primary {background: linear-gradient(90deg, var(--accent), #ff9a3c);border: none;color: #0b0b0b;}
+    .btn.primary:hover {opacity: 0.9;}
+    .wrap {max-width: var(--maxw);margin: 28px auto;padding: 0 20px;}
+    .cols {display: grid;grid-template-columns: 1fr 360px;gap: 22px;}
+    @media (max-width: 980px) {.cols {grid-template-columns: 1fr;}}
+    .panel {background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));padding: 24px;border-radius: 12px;border: 1px solid rgba(255, 255, 255, 0.03);box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);}
+    .panel1 {margin-top: 10px;background: linear-gradient(180deg, rgba(221, 20, 20, 0.02), rgba(255, 255, 255, 0.01));padding: 7px;border-radius: 8px;border: 1px solid rgba(255, 255, 255, 0.03);}
+    .profile-header {display: flex;align-items: center;gap: 20px;margin-bottom: 24px;flex-wrap: wrap;}
+    .profile-avatar {width: 100px;height: 100px;border-radius: 12px;overflow: hidden;flex-shrink: 0;}
+    .profile-avatar img {width: 100%;height: 100%;object-fit: cover;image-rendering: pixelated;}
+    .profile-info h1 {margin: 0 0 8px;font-size: 32px;}
+    .profile-role {color: var(--accent-2);font-weight: 600;font-size: 18px;margin-bottom: 8px;}
+    .profile-realname {color: var(--muted);font-size: 16px;}
+    .skin-actions {display: flex;gap: 10px;justify-content: center;flex-wrap: wrap;}
+    .stats-grid {display: grid;grid-template-columns: repeat(2, 1fr);gap: 12px;margin-top: 20px;}
+    .stat-item {padding: 12px;border-radius: 8px;background: rgba(255, 255, 255, 0.02);border: 1px solid rgba(255, 255, 255, 0.03);transition: all 0.2s;}
+    .stat-item:hover {border-color: rgba(107, 220, 255, 0.1);background: rgba(107, 220, 255, 0.03);}
+    .stat-label {color: var(--muted);font-size: 13px;margin-bottom: 4px;}
+    .stat-value {font-weight: 700;font-size: 18px;}
+    .videos-section {margin-top: 30px;}
+    .videos-grid {display: grid;grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));gap: 16px;margin-top: 16px;}
+    .video-item {border-radius: 10px;overflow: hidden;background: #000;transition: transform 0.2s, box-shadow 0.2s;border: 1px solid rgba(255, 255, 255, 0.05);}
+    .video-item:hover {transform: translateY(-4px);box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);border-color: var(--accent-2);}
+    .video-thumbnail {width: 100%;height: 140px;object-fit: cover;}
+    .video-title {padding: 12px;font-weight: 600;color: #e8eef6;}
+    .loading {display: flex;flex-direction: column;justify-content: center;align-items: center;min-height: 400px;font-size: 18px;color: var(--muted);gap: 20px;}
+    .spinner {width: 40px;height: 40px;border: 4px solid rgba(107, 220, 255, 0.3);border-top: 4px solid var(--accent-2);border-radius: 50%;animation: spin 1s linear infinite;}
+    @keyframes spin {0% { transform: rotate(0deg); }100% { transform: rotate(360deg); }}
+    .back-btn {display: inline-flex;align-items: center;gap: 8px;padding: 10px 16px;background: rgba(255, 255, 255, 0.03);border: 1px solid rgba(255, 255, 255, 0.06);border-radius: 8px;cursor: pointer;transition: all 0.2s;}
     .back-btn:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: var(--accent-2);
-    }
-
-    /* ERROR */
-    .error-container {
-      text-align: center;
-      padding: 60px 20px;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-in {
-      animation: fadeIn 0.3s ease-out;
-    }
-
-    /* CONTROLS INFO */
-    .controls-info {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .control-item {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 8px;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 6px;
-    }
-
-    /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ НОВЫХ ПОЛЕЙ */
-    .social-links {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-      flex-wrap: wrap;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 12px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      transition: all 0.2s;
-    }
-
-    .social-link:hover {
-      background: rgba(255, 122, 28, 0.1);
-      border-color: var(--accent);
-    }
-
-    .merits-section {
-      margin-top: 24px;
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.01);
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    .merits-title {
-      color: var(--accent-2);
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .merits-content {
-      color: var(--muted);
-      line-height: 1.6;
-      white-space: pre-line;
-    }
-
-    .youtube-channel {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      background: rgba(255, 0, 0, 0.1);
-      border: 1px solid rgba(255, 0, 0, 0.3);
-      border-radius: 8px;
-      color: #ff6b6b;
-      margin-top: 8px;
-    }
-
-    .youtube-channel:hover {
-      background: rgba(255, 0, 0, 0.2);
-      border-color: #ff4444;
-    }
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-2);}
+    .error-container {text-align: center;padding: 60px 20px;max-width: 500px;margin: 0 auto;}
+    @keyframes fadeIn {from { opacity: 0; transform: translateY(10px); }to { opacity: 1; transform: translateY(0); }}
+    .fade-in {animation: fadeIn 0.3s ease-out;}
+    .controls-info {display: flex;align-items: center;justify-content: center;gap: 8px;margin-top: 12px;color: var(--muted);font-size: 13px;}
+    .control-item {display: flex;align-items: center;gap: 4px;padding: 4px 8px;background: rgba(255, 255, 255, 0.03);border-radius: 6px;}
+    .social-links {display: flex;gap: 12px;margin-top: 16px;flex-wrap: wrap;}
+    .social-link {display: flex;align-items: center;gap: 6px;padding: 8px 12px;background: rgba(255, 255, 255, 0.02);border: 1px solid rgba(255, 255, 255, 0.05);border-radius: 8px;transition: all 0.2s;}
+    .social-link:hover {background: rgba(255, 122, 28, 0.1);border-color: var(--accent);}
+    .merits-section {margin-top: 24px;padding: 16px;background: rgba(255, 255, 255, 0.01);border-radius: 8px;border: 1px solid rgba(255, 255, 255, 0.03);}
+    .merits-title {color: var(--accent-2);font-weight: 600;margin-bottom: 12px;}
+    .merits-content {color: var(--muted);line-height: 1.6;white-space: pre-line;}
+    .youtube-channel {display: inline-flex;align-items: center;gap: 6px;padding: 6px 12px;background: rgba(255, 0, 0, 0.1);border: 1px solid rgba(255, 0, 0, 0.3);border-radius: 8px;color: #ff6b6b;margin-top: 8px;}
+    .youtube-channel:hover {background: rgba(255, 0, 0, 0.2);border-color: #ff4444;}
+    .left-panel {display: flex;flex-direction: column;gap: 22px;}
+    .right-panel {position: sticky;top: 20px;height: fit-content;}
   </style>
 </head>
 <body>
-
-  <!-- NAV -->
   <nav class="nav">
     <div class="logo" onclick="window.location.href = 'index.html'">
       <img src="img/logo.PNG" alt="TC2 logo">
@@ -398,22 +79,18 @@
     </div>
     <button class="btn" onclick="history.back()">← Назад</button>
   </nav>
-
   <main class="wrap">
     <div id="loading" class="loading">
       <div class="spinner"></div>
       <div>Загрузка профиля...</div>
     </div>
-
     <div id="error" class="error-container" style="display: none;">
       <h2>Игрок не найден</h2>
       <p style="color: var(--muted); margin: 16px 0 24px;">Проверьте правильность ссылки или вернитесь на главную.</p>
       <button class="btn primary" onclick="window.location.href = 'index.html'">На главную</button>
     </div>
-
     <div id="profile" class="cols fade-in" style="display: none;">
-      <!--ИНФОРМАЦИЯ -->
-      <div>
+      <div class="left-panel">
         <div class="panel">
           <div class="profile-header">
             <div class="profile-avatar">
@@ -424,15 +101,12 @@
               <div class="profile-role" id="player-role"></div>
               <div class="profile-realname" id="player-realname"></div>
               <div id="social-links" class="social-links">
-                <!-- Социальные ссылки будут добавлены через JS -->
               </div>
             </div>
           </div>
 
           <div id="player-about">
-            <!-- ОБ ИГРОКЕ БУДЕТ ДОБАВЛЕНО JS -->
           </div>
-
           <div id="merits-section" class="merits-section" style="display: none;">
             <div class="merits-title">🏆 Заслуги и достижения</div>
             <div class="merits-content" id="player-merits"></div>
@@ -459,43 +133,27 @@
               <div class="stat-value" id="player-activity">—</div>
             </div>
           </div>
-
-          <div id="youtube-channel-section" style="margin-top: 20px; display: none;">
-            <a id="youtube-channel-link" class="youtube-channel" target="_blank">
-              <span style="font-weight: bold;">▶️</span> YouTube канал
-            </a>
-          </div>
-        </div>
-
-        <!-- ВИДЕО -->
         <div id="videos-section" class="panel videos-section" style="display: none;">
           <h2 style="margin: 0 0 16px;">🎬 Видео игрока</h2>
           <div id="videos-grid" class="videos-grid">
-            <!-- Видео будут добавлены через JS -->
           </div>
         </div>
 
-        <!-- КОНТАКТЫ И ССЫЛКИ -->
-        <div id="contacts-section" class="panel" style="margin-top: 24px; display: none;">
-          <h2 style="margin: 0 0 16px;">🔗 Контакты и ссылки</h2>
+        <div id="contacts-section" class="panel" style="margin-top: 10%; display: none;">
+          <h2 style="margin: 0 0 36px;">🔗 Контакты и ссылки</h2>
           <div id="contacts-content">
-            <!-- Контакты будут добавлены через JS -->
           </div>
         </div>
       </div>
 
-      <!-- ПРАВАЯ КОЛОНКА (ПУСТАЯ, МОЖНО ИСПОЛЬЗОВАТЬ ДЛЯ ДОПОЛНИТЕЛЬНОЙ ИНФОРМАЦИИ) -->
-      <div>
-        <div class="panel" style="height: 100%;">
-          <h3 style="margin: 0 0 16px;">📊 Дополнительная информация</h3>
-          <div style="color: var(--muted);">
-            <p>Информация обновляется вручную администрацией проекта.</p>
-            <p style="margin-top: 12px; font-size: 14px;">Для обновления данных обратитесь к администраторам.</p>
-          </div>
-          <div class="panel1" id="namemc-link" style="cursor: pointer; margin-top: 20px; display: none;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <span>👤</span>
-              <span>Открыть профиль на NameMC</span>
+        <div class="right-panel">
+          <div class="panel">
+            <h3>📊 Дополнительная информация</h3>
+            <p style="color:var(--muted)">Информация обновляется вручную администрацией проекта.</p>
+            <p style="margin-top:12px;font-size:14px;color:var(--muted)">Для обновления данных обратитесь к администраторам.</p>
+
+            <div id="namemc-link" class="panel1" style="display:none; cursor:pointer; margin-top:15px">
+              <span>👤</span> Открыть профиль на NameMC
             </div>
           </div>
         </div>
@@ -506,30 +164,20 @@
   <footer style="margin-top: 40px; padding: 28px; text-align: center; color: var(--muted); opacity: 0.9;">
     © TreeCube — проект контент‑мейкеров. Профили обновляются вручную.
   </footer>
-
-  <!-- ПОДКЛЮЧАЕМ ФАЙЛ С ДАННЫМИ -->
   <script src="js\players-data.js"></script>
-  
   <script>
     let currentPlayer = null;
-
-    // Получаем ник из URL
     function getNickFromURL() {
       const params = new URLSearchParams(window.location.search);
       return params.get('nick');
     }
-
-    // Поиск игрока
     function findPlayer(nick) {
-      // players массив должен быть определен в players-data.js
       if (typeof players === 'undefined') {
         console.error('Файл players-data.js не загружен или не содержит данных');
         return null;
       }
       return players.find(p => p.nick === nick);
     }
-
-    // Инициализация страницы
     function initPage() {
       const nick = getNickFromURL();
       if (!nick) {
@@ -545,8 +193,6 @@
 
       loadProfile();
     }
-
-    // Загрузка профиля
     function loadProfile() {
       const loadingEl = document.getElementById('loading');
       const profileEl = document.getElementById('profile');
@@ -556,7 +202,6 @@
       errorEl.style.display = 'none';
       profileEl.style.display = 'grid';
 
-      // Заполняем основную информацию
       document.getElementById('player-name').textContent = currentPlayer.nick;
       document.getElementById('player-role').textContent = currentPlayer.role || 'Игрок';
       document.getElementById('player-realname').textContent = currentPlayer.real ? `Проще: ${currentPlayer.real}` : '';
@@ -564,20 +209,15 @@
       document.getElementById('player-role-badge').textContent = currentPlayer.role || 'Игрок';
       document.getElementById('player-nick-copy').setAttribute('data-nick', currentPlayer.nick);
 
-      // Аватар
       document.getElementById('avatar').src = `https://mineskin.eu/helm/${encodeURIComponent(currentPlayer.nick)}/100.png`;
       document.getElementById('avatar').onerror = function() {
         this.src = `https://minotar.net/helm/${encodeURIComponent(currentPlayer.nick)}`;
       };
-
-      // Ссылка на NameMC
       const namemcLink = document.getElementById('namemc-link');
       namemcLink.style.display = 'block';
       namemcLink.onclick = function() {
         window.open(`https://namemc.com/profile/${encodeURIComponent(currentPlayer.nick)}`, '_blank');
       };
-
-      // О игроке
       const aboutEl = document.getElementById('player-about');
       aboutEl.innerHTML = `
         <h3 style="margin: 0 0 12px;">📖 Об игроке</h3>
@@ -585,34 +225,18 @@
           ${currentPlayer.about || 'Информация об игроке пока не добавлена. Модераторы проекта обновляют данные вручную.'}
         </div>
       `;
-
-      // Заслуги
       if (currentPlayer.merits && currentPlayer.merits.trim()) {
         const meritsSection = document.getElementById('merits-section');
         const meritsContent = document.getElementById('player-merits');
         meritsSection.style.display = 'block';
         meritsContent.textContent = currentPlayer.merits;
       }
-
-      // YouTube канал
-      if (currentPlayer.youtubeChannel) {
-        const youtubeSection = document.getElementById('youtube-channel-section');
-        const youtubeLink = document.getElementById('youtube-channel-link');
-        youtubeSection.style.display = 'block';
-        youtubeLink.href = currentPlayer.youtubeChannel;
-      }
-
-      // Социальные ссылки
       const socialLinksEl = document.getElementById('social-links');
       socialLinksEl.innerHTML = '';
-
-      // Twitch
       if (currentPlayer.twitch) {
         let twitchUrl = currentPlayer.twitch;
-        // Если это текстовая ссылка, пытаемся извлечь URL
         if (twitchUrl.includes('twitch.tv')) {
           if (!twitchUrl.startsWith('http')) {
-            // Ищем URL в тексте
             const urlMatch = twitchUrl.match(/twitch\.tv\/\w+/);
             if (urlMatch) {
               twitchUrl = `https://${urlMatch[0]}`;
@@ -622,12 +246,18 @@
           twitchLink.href = twitchUrl.startsWith('http') ? twitchUrl : `https://${twitchUrl}`;
           twitchLink.target = '_blank';
           twitchLink.className = 'social-link';
-          twitchLink.innerHTML = '<span>🔴</span> Twitch';
+          twitchLink.innerHTML = '<span>🟣</span> Twitch';
           socialLinksEl.appendChild(twitchLink);
         }
       }
-
-      // Видео
+      if (currentPlayer.youtubeChannel) {
+        const ytLink = document.createElement('a');
+        ytLink.href = currentPlayer.youtubeChannel;
+        ytLink.target = '_blank';
+        ytLink.className = 'social-link';
+        ytLink.innerHTML = '<span>🔴</span> YouTube';
+        socialLinksEl.appendChild(ytLink);
+      }
       if (currentPlayer.videos && currentPlayer.videos.length > 0) {
         document.getElementById('videos-section').style.display = 'block';
         const videosGrid = document.getElementById('videos-grid');
@@ -638,8 +268,7 @@
           videoEl.href = videoUrl;
           videoEl.target = '_blank';
           videoEl.className = 'video-item';
-          
-          // Генерируем превью из YouTube
+
           let thumbnail = '';
           if (videoUrl.includes('youtu.be/')) {
             const videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
@@ -656,8 +285,6 @@
           videosGrid.appendChild(videoEl);
         });
       }
-
-      // Контакты
       const contactsSection = document.getElementById('contacts-section');
       const contactsContent = document.getElementById('contacts-content');
       
@@ -682,8 +309,6 @@
         contactsContent.innerHTML = contactsHTML;
       }
     }
-
-    // Копирование ника
     function copyNick() {
       if (!currentPlayer) return;
       
@@ -696,8 +321,6 @@
           showNotification('Не удалось скопировать', true);
         });
     }
-
-    // Показать уведомление
     function showNotification(message, isError = false) {
       const notification = document.createElement('div');
       notification.textContent = message;
@@ -726,14 +349,10 @@
         }, 300);
       }, 3000);
     }
-
-    // Показать ошибку
     function showError() {
       document.getElementById('loading').style.display = 'none';
       document.getElementById('error').style.display = 'block';
     }
-
-    // Инициализация при загрузке страницы
     document.addEventListener('DOMContentLoaded', initPage);
   </script>
 </body>

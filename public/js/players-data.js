@@ -1,6 +1,6 @@
 const players = [
     {
-        nick: 'endiekey',
+        nick: 'Endiekey__',
         real: 'Эндикей',
         season: '2',
         about: 'Эндикто? Эндиштерн',
@@ -16,7 +16,7 @@ const players = [
         youtubeChannel: ''
     },
     {
-        nick: 'Кукуруку',
+        nick: 'Kykyruky',
         real: 'Кукуруку',
         season: '1 сезона / TreeCube origins',
         about: 'Трипи тропа дайте дропа',
@@ -91,7 +91,7 @@ const players = [
         youtubeChannel: ''
     },
     {
-        nick: 'KNOX Play',
+        nick: 'KNOX_Play',
         real: 'Кнокс',
         season: 'С Трикуб Академии',
         about: 'В Майнкрафте 11 лет, а на Ютубе 7.. а вы чего добились?',
@@ -109,7 +109,7 @@ const players = [
         youtubeChannel: ''
     },
     {
-        nick: '@kilka_v_hJlebe',
+        nick: 'Kilka_v_HJIebe',
         real: 'Килька',
         season: '1',
         about: 'Отрицательный результат тоже результат',
@@ -186,5 +186,98 @@ const players = [
         ],
         merits: 'самый молодой игрок тк, забрал статуэтку за лучшую базу сезона на прошлом форевере',
         youtubeChannel: 'https://www.youtube.com/@mrsteak336/featured'
+    },
+    {
+        nick: '0TVECHAU',
+        real: 'Отвечаю (Отв)',
+        season: '0 сезон',
+        about: 'Elytra Mace/NetherOP PvP Редстоун/Механизмы',
+        role: 'Участник',
+        twitch: 'https://www.twitch.tv/0tv3chau',
+        youtube: '',
+        videos: [
+            'https://youtu.be/nXE55XgumrQ',
+            'https://youtu.be/yKN6Z4QxRG4',
+            'https://youtu.be/M4xU4FqEd-U',
+            'https://youtu.be/irD4Xx_4OHk',
+            'https://youtu.be/XPfoX2JjS44',
+            'https://youtu.be/r93j48PIvIY',
+            'https://youtu.be/3i3GMXkKnJo',
+            'https://youtu.be/qPhXU_nduXc',
+            'https://youtu.be/Uz-GTEms1fA'
+        ],
+        merits: 'Тюрьма Параллакс на 1ом сезоне и Лор 1ого и 2ого сезона ТриКуба (скоро и 3его)',
+        youtubeChannel: 'https://youtube.com/@otvechau'
+    },
+    {
+        nick: 'Mr_SlaymaN',
+        real: 'слаймен',
+        season: '2',
+        about: '58/90',
+        role: 'Участник',
+        twitch: 'https://www.twitch.tv/snr_slayman',
+        youtube: '',
+        videos: [
+            'https://youtu.be/lrBoaX5GODA?si=gOkyAxCCC_t97nGl'
+        ],
+        merits: 'сделал мафию',
+        youtubeChannel: 'https://www.youtube.com/@slayman_channel'
+    },
+    {
+        nick: 'BlHite4',
+        real: 'Хайт',
+        season: '2',
+        about: 'Надеюсь не уеду отдыхать на год)',
+        role: 'Участник',
+        twitch: 'https://www.twitch.tv/blhite4',
+        youtube: '',
+        videos: [
+            'https://youtu.be/Mv-EZ1npmYg',
+            'https://youtu.be/eSP2N8WUr04'
+        ],
+        merits: 'Забрал голову у Артмайна',
+        youtubeChannel: 'https://www.youtube.com/@Blhite4'
+    },
+    {
+        nick: 'Z3phyr_OK',
+        real: 'Зефир',
+        season: '2 сезон',
+        about: 'Мне сказали написать здесь всё что хочу и это будет видно в моём профиле: "Напишите здесь всё что хотите и это будет видно в вашем профиле"',
+        role: 'Участник',
+        twitch: 'https://www.twitch.tv/zephyr_ok',
+        youtube: '',
+        videos: [
+            'https://youtu.be/aFD1y9gpT2w?si=k4WrqWaCFFBUa0Lp',
+            'https://youtu.be/uCeJNkrAp5g?si=D1LakHdpgQ3HdwOO'
+        ],
+        merits: 'Единственная моя заслуга это то, что я придумал день спойлеров на который всем всё равно. Всё, буквально всё (не вписывай про день спойлеров, это так тупо будет выглядить)',
+        youtubeChannel: 'https://www.youtube.com/@Zephyr76213'
+    },
+    {
+        nick: 'megatntmega',
+        real: 'Радомир',
+        season: '1',
+        about: 'Я главный технический администратор TreeCube. Играю в CS2 и WarThunder',
+        role: 'Участник',
+        twitch: '',
+        youtube: '',
+        videos: [],
+        merits: 'Сделал лор на ТК1, сделал сборку для ТК2, буду делать сборку и лор для ТК3',
+        youtubeChannel: ''
+    },
+    {
+        nick: 'FireLegend_',
+        real: 'Фаер',
+        season: '2',
+        about: 'Медный кулак напомнит о себе..',
+        role: 'Участник',
+        twitch: 'https://www.twitch.tv/firelegendik',
+        youtube: '',
+        videos: [
+            'https://youtu.be/-lzmaAzTtNM?si=FVAz5AAkBp-0K7Ic'
+        ],
+        merits: 'Построил ферму кукол вуду Редди Бобра',
+        youtubeChannel: 'https://youtube.com/@firelegend08?si=A5KM8eHZJ0FAQJNi'
     }
 ];
+console.log('players-data.js загружен, игроков:', players.length);

@@ -15,32 +15,26 @@
     html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;color:#e8eef6;background:linear-gradient(180deg,#050506 0%, #0f2233 100%);background-attachment: fixed;}
     a{color:inherit}
     
-
-    /* NAV */
     .nav{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:var(--maxw);margin:0 auto}
     .logo{display:flex;align-items:center;gap:12px}
     .logo img{height:56px;image-rendering:pixelated}
     .nav .links{display:flex;gap:12px;align-items:center}
     .btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;font-weight:600;cursor:pointer}
     .btn.primary{background:linear-gradient(90deg,var(--accent),#ff9a3c);border:none;color:#0b0b0b}
-    
-    /* HERO */
+
     .hero{position:relative;overflow:hidden;border-radius:12px;margin:18px auto 6px;max-width:var(--maxw);padding:60px 28px;background:linear-gradient(180deg,rgba(255,122,28,0.06),rgba(107,220,255,0.02));box-shadow:0 8px 30px rgba(0,0,0,0.6);display:flex;gap:24px;align-items:center}
     .hero-left{flex:1}
     .hero h1{font-size:44px;margin:0 0 8px;letter-spacing:0.6px}
     .hero p{margin:0;color:var(--muted);font-size:16px;max-width:700px}
     .hero-cta{margin-top:18px;display:flex;gap:12px}
 
-    /* hero visual */
     .hero-visual{width:360px;height:204px;border-radius:10px;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.03)}
     .hero-visual img{max-width:100%;max-height:100%;object-fit:cover}
 
-    /* LAYOUT */
     .wrap{max-width:var(--maxw);margin:28px auto;padding:0 20px}
     .cols{display:grid;grid-template-columns:1fr 360px;gap:22px}
     @media (max-width:980px){.cols{grid-template-columns:1fr}.hero{flex-direction:column}.hero-visual{width:100%;height:220px}}
 
-    /* PLAYERS */
     .panel{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
     .section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
     .search{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
@@ -54,48 +48,29 @@
     .nick{font-weight:700}
     .real{color:var(--muted);font-size:13px}
     .copy{margin-left:auto;padding:6px 8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);cursor:pointer}
-
-    /* SIDEBAR */
     .sidebar .card{margin-bottom:12px}
     .stat{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:8px;background:rgba(255,255,255,0.02)}
-
-    /* FOOTER */
     footer{margin-top:40px;padding:28px;text-align:center;color:var(--muted);opacity:0.9}
-
-    /* small UI */
     .tag{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:13px}
     .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
-
-    /* subtle animation */
     @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
     .logo img{animation:floaty 6s ease-in-out infinite}
     .slider {overflow: hidden;width: 100%;height: 200px;position: relative;}
     .slide-track {display: flex;gap: 40px;animation: scroll 40s linear infinite;width: 736px;}
     .slide-track:hover {animation-play-state: paused;}
 
-    /* скорость – регулируй временем */
     @keyframes scroll {0% {transform: translateX(0);}100% {transform: translateX(-500%);} }
 
     .img {width: 260px;height: 160px;border-radius: 12px;object-fit: cover;transition: .3s;cursor: pointer;}
     .img:hover {transform: scale(1.15);z-index: 10;}
-    /* Ограничение первоначальной видимости списка игроков */
-    .players-grid {
-      max-height: 370px;
-      overflow: hidden;
-      position: relative;
-      transition: max-height .6s ease; /* плавное изменение */
-    }
+    .players-grid {max-height: 370px;overflow: hidden;position: relative;transition: max-height .6s ease;}
 
-    .players-grid.expanded {
-      max-height: 2000px; /* достаточно чтобы уместить весь список */
-    }
+    .players-grid.expanded {max-height: 2000px;}
     .show-more-btn {margin: 12px auto 0;padding: 10px 16px;background: rgba(255,255,255,0.05);border: 1px solid rgba(255,255,255,0.15);border-radius: 8px;display: block;cursor: pointer;font-weight: 600;color: #fff;transition: .25s;}
     .show-more-btn:hover {background: rgba(255,255,255,0.12);transform: translateY(-2px);}
   </style>
 </head>
 <body>
-
-  <!-- NAV -->
   <nav class="nav">
     <div class="logo">
       <img src="img\logo.PNG" alt="TC2 logo">
@@ -111,8 +86,6 @@
       <button class="btn primary" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'})">Присоединиться</button>
     </div>
   </nav>
-
-  <!-- HERO -->
   <header class="hero" role="banner">
     <div class="hero-left">
       <h1>TreeCube — мир контента и историй</h1>
@@ -121,50 +94,44 @@
         <button class="btn primary" onclick="document.getElementById('players').scrollIntoView({behavior:'smooth'})">Посмотреть игроков</button>
         <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Узнать больше</button>
       </div>
-
       <div style="margin-top:18px;display:flex;gap:10px;align-items:center">
         <div class="pill">Сезон 2 завершён</div>
         <div class="tag">Автор арта: <a href="https://t.me/moupupsiku" target="_blank" style="color:var(--accent-2)">BaLerA_</a></div>
       </div>
     </div>
-
     <div class="hero-visual" aria-hidden>
       <img src="img\TC3.png" alt="hero visual">
     </div>
   </header>
-
   <main class="wrap">
     <div class="cols">
       <section>
+    <section id="videos" class="panel" style="margin-bottom:18px; padding:1px; overflow:hidden; border-radius:12px;">
+      <h3 style="margin:0 0 px; text-align:center; font-size:22px; font-weight:700">Видеоролики по проекту</h3>
+    <div class="slider">
+      <div class="slide-track" style="margin-top: 15px;">
+          <img src="img/oblochki/obl1.jpg" class="img">
+          <img src="img/oblochki/obl2.jpg" class="img">
+          <img src="img/oblochki/obl3.jpg" class="img">
+          <img src="img/oblochki/obl4.jpg" class="img">
+          <img src="img/oblochki/obl5.jpg" class="img">
+          <img src="img/oblochki/obl6.jpg" class="img">
+          <img src="img/oblochki/obl7.jpg" class="img">
+          <img src="img/oblochki/obl8.jpg" class="img">
+          <img src="img/oblochki/obl9.jpg" class="img">
+          <img src="img/oblochki/obl10.jpg" class="img">
+          <img src="img/oblochki/obl11.jpg" class="img">
+          <img src="img/oblochki/obl12.jpg" class="img">
+          <img src="img/oblochki/obl13.jpg" class="img">
+          <img src="img/oblochki/obl14.jpg" class="img">
+          <img src="img/oblochki/obl15.jpg" class="img">
+          <img src="img/oblochki/obl16.jpg" class="img">
+          <img src="img/oblochki/obl17.jpg" class="img">
+          <img src="img/oblochki/obl18.jpg" class="img">
+      </div>
+    </div>
 
-        <!-- ABOUT -->
-
-<section id="videos" class="panel" style="margin-bottom:18px; padding:1px; overflow:hidden; border-radius:12px;">
-  <h3 style="margin:0 0 px; text-align:center; font-size:22px; font-weight:700">Видеоролики по проекту</h3>
-<div class="slider">
-  <div class="slide-track" style="margin-top: 15px;">
-      <img src="img/oblochki/obl1.jpg" class="img">
-      <img src="img/oblochki/obl2.jpg" class="img">
-      <img src="img/oblochki/obl3.jpg" class="img">
-      <img src="img/oblochki/obl4.jpg" class="img">
-      <img src="img/oblochki/obl5.jpg" class="img">
-      <img src="img/oblochki/obl6.jpg" class="img">
-      <img src="img/oblochki/obl7.jpg" class="img">
-      <img src="img/oblochki/obl8.jpg" class="img">
-      <img src="img/oblochki/obl9.jpg" class="img">
-      <img src="img/oblochki/obl10.jpg" class="img">
-      <img src="img/oblochki/obl11.jpg" class="img">
-      <img src="img/oblochki/obl12.jpg" class="img">
-      <img src="img/oblochki/obl13.jpg" class="img">
-      <img src="img/oblochki/obl14.jpg" class="img">
-      <img src="img/oblochki/obl15.jpg" class="img">
-      <img src="img/oblochki/obl16.jpg" class="img">
-      <img src="img/oblochki/obl17.jpg" class="img">
-      <img src="img/oblochki/obl18.jpg" class="img">
-  </div>
-</div>
-
-</section>
+      </section>
         <div id="about" class="panel" style="margin-bottom:18px">
           <div class="section-title">
             <h3 style="margin:0">О проекте</h3>
@@ -172,8 +139,6 @@
           </div>
           <p style="color:var(--muted);margin:0 0 8px">TreeCube — закрытое сообщество контент‑мейкеров: стримеры и ютуберы объединяются в одной сфере. Наша цель — давать интересный игровой контент, поддерживать креатив как художников, так и разные другие творчиске направления и устраивать масштабные события.</p>
         </div>
-
-        <!-- PLAYERS -->
         <div id="players" class="panel">
           <div class="section-title">
             <h3 style="margin:0">🔖 Состав игроков</h3>
@@ -181,8 +146,6 @@
           </div>
 
           <div style="margin-top:12px">
-              <div style="font-weight:700;margin-bottom:8px;color:var(--accent-2)">Владелец / Главный админ</div>
-
               <div class="players-grid collapsed" id="players-grid"></div>
 
               <button id="togglePlayers" class="show-more-btn">Показать всех</button>
@@ -190,8 +153,6 @@
         </div>
 
       </section>
-
-      <!-- SIDEBAR -->
       <aside class="sidebar">
         <div class="card panel">
           <div style="display:flex;justify-content:space-between;align-items:center">
@@ -218,8 +179,6 @@
         </div>
       </aside>
     </div>
-
-    <!-- JOIN / FOOTER CTA -->
     <section id="join" style="margin-top:28px" class="panel">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
         <div>
@@ -238,16 +197,11 @@
   <footer>
     © TreeCube — проект контент‑мейкеров. Список игроков и новости обновляются вручную.
   </footer>
-
-  <!-- ПОДКЛЮЧАЕМ ВНЕШНИЙ ФАЙЛ С ДАННЫМИ -->
   <script src="js/players-data.js"></script>
-  
   <script>
-    // Проверяем, что данные загружены
     if (typeof players === 'undefined') {
       console.error('Файл players-data.js не загружен или не содержит данных');
-      // Создаем временный массив для отображения
-      var players = [
+      players = [
         {nick:'0TVECHAU',real:'Отвечаю',role:'Владелец'},
         {nick: 'endiekey', real: 'Эндикей', role: 'Участник'},
         {nick: 'Кукуруку', real: 'Кукуруку', role: 'Участник'}
@@ -262,9 +216,7 @@
       const expanded = gridPlayers.classList.toggle("expanded");
 
       if (expanded) {
-        toggleBtn.textContent = "Скрыть ▲";
-
-        // плавная автоматическая прокрутка вниз к блоку
+        toggleBtn.textContent = "Скрыть";
         setTimeout(()=>{ 
           gridPlayers.scrollIntoView({behavior:'smooth',block:'start'}); 
         },200);
@@ -292,7 +244,7 @@
       meta.appendChild(nick);meta.appendChild(real);
       const btn = document.createElement('button');btn.className='copy';btn.textContent='Копировать';
       btn.addEventListener('click', async (e)=>{
-        e.stopPropagation(); // Предотвращаем переход на профиль
+        e.stopPropagation();
         try{
           await navigator.clipboard.writeText(p.nick);
           btn.textContent='Скопировано';
@@ -305,11 +257,8 @@
       div.onclick = ()=>location.href = `player.html?nick=${p.nick}`;
       return div;
     }
-
-    // Сортируем игроков: сначала владельцы/админы, потом остальные
     function sortPlayers(playersArray) {
       return playersArray.sort((a, b) => {
-        // Приоритет ролей
         const roleOrder = {
           'Владелец': 1,
           'Тех.админ': 2,
@@ -324,28 +273,19 @@
         if (roleA !== roleB) {
           return roleA - roleB;
         }
-        
-        // Если роли одинаковые, сортируем по нику
+
         return a.nick.localeCompare(b.nick);
       });
     }
-
-    // Отображаем отсортированных игроков
     const grid = document.getElementById('players-grid');
     const sortedPlayers = sortPlayers(players);
-    
-    // Сначала добавляем владельца отдельно
     const ownerSection = document.querySelector('[style*="font-weight:700;margin-bottom:8px;color:var(--accent-2)"]');
     if (ownerSection) {
       ownerSection.innerHTML = 'Владелец';
     }
-    
-    // Добавляем всех игроков
     sortedPlayers.forEach(p => {
       grid.appendChild(mkPlayerCard(p));
     });
-
-    // search
     document.getElementById('search').addEventListener('input', e=>{
       const q = e.target.value.trim().toLowerCase();
       const items = grid.querySelectorAll('.player');
@@ -355,74 +295,41 @@
         node.style.display = (nick.includes(q) || real.includes(q)) ? 'flex' : 'none';
       });
     });
-
-    // fake online count (placeholder) — replace with real API if available
     document.getElementById('onlineCount').textContent = 'разное';
+    const marquee = document.getElementById("slider");
+    const imgBox = document.getElementById("imgBox");
 
-  // --- MARQUEE SLIDER SCRIPT ---
-const marquee = document.getElementById("slider");
-const imgBox = document.getElementById("imgBox");
-
-function duplicateImages(){
-  const allImgs = imgBox.querySelectorAll("img");
-  allImgs.forEach(img=>{
-    const clone = img.cloneNode(true);
-    imgBox.appendChild(clone);
-  });
-}
-
-function resetImages(){
-  const originalImages = Array.from(imgBox.querySelectorAll("img")).slice(0,3);
-  imgBox.innerHTML = "";
-  originalImages.forEach(img=>imgBox.appendChild(img));
-  duplicateImages();
-  setupHoverPause();
-}
-
-duplicateImages();
-setInterval(duplicateImages,4000);
-setInterval(resetImages,30000);
-
-function setupHoverPause(){
-  const images=document.querySelectorAll('.img');
-  images.forEach(img=>{
-    img.addEventListener('mouseover',()=>marquee.stop());
-    img.addEventListener('mouseout',()=>marquee.start());
-  });
-}
-setupHoverPause();
-
-const observer = new MutationObserver(setupHoverPause);
-observer.observe(imgBox,{childList:true});
-
-</script>
-  <script>
-    // slideshow hover animation
-    document.querySelectorAll('.video-item').forEach(item=>{
-    item.addEventListener('mouseover',()=>{
-    item.style.transform='scale(1.06) translateY(-4px)';
-    item.style.boxShadow='0 10px 30px rgba(0,0,0,0.55)';
-    });
-    item.addEventListener('mouseout',()=>{
-    item.style.transform='scale(1) translateY(0)';
-    item.style.boxShadow='0 6px 20px rgba(0,0,0,0.35)';
-    });
-    });
-
-
-    // autoplay scroll
-    const slider=document.getElementById('videoSlider');
-    let autoScroll=true;
-    let lastScroll=0;
-    function autoplay(){
-    if(!autoScroll) return;
-    slider.scrollLeft+=1.2;
-    if(slider.scrollLeft===lastScroll) slider.scrollLeft=0;
-    lastScroll=slider.scrollLeft;
+    function duplicateImages(){
+      const allImgs = imgBox.querySelectorAll("img");
+      allImgs.forEach(img=>{
+        const clone = img.cloneNode(true);
+        imgBox.appendChild(clone);
+      });
     }
-    let interval=setInterval(autoplay,20);
-    slider.addEventListener('mouseenter',()=>{autoScroll=false});
-    slider.addEventListener('mouseleave',()=>{autoScroll=true});
-  </script>
+
+    function resetImages(){
+      const originalImages = Array.from(imgBox.querySelectorAll("img")).slice(0,3);
+      imgBox.innerHTML = "";
+      originalImages.forEach(img=>imgBox.appendChild(img));
+      duplicateImages();
+      setupHoverPause();
+    }
+
+    duplicateImages();
+    setInterval(duplicateImages,4000);
+    setInterval(resetImages,30000);
+
+    function setupHoverPause(){
+      const images=document.querySelectorAll('.img');
+      images.forEach(img=>{
+        img.addEventListener('mouseover',()=>marquee.stop());
+        img.addEventListener('mouseout',()=>marquee.start());
+      });
+    }
+    setupHoverPause();
+
+    const observer = new MutationObserver(setupHoverPause);
+    observer.observe(imgBox,{childList:true});
+    </script>
 </body>
 </html>
