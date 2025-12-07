@@ -280,4 +280,3 @@ const players = [
         youtubeChannel: 'https://youtube.com/@firelegend08?si=A5KM8eHZJ0FAQJNi'
     }
 ];
-console.log('players-data.js загружен, игроков:', players.length);
