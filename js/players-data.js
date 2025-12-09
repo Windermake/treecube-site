@@ -280,19 +280,17 @@ const players = [
         youtubeChannel: 'https://youtube.com/@firelegend08?si=A5KM8eHZJ0FAQJNi'
     },
     {
-        nick: 'Windermake',
-        real: 'Виндер',
+        nick: 'FireLegend_',
+        real: 'Фаер',
         season: '2',
-        about: 'Я есть то, что Я думаю...',
+        about: 'Медный кулак напомнит о себе..',
         role: 'Участник',
-        twitch: 'https://www.twitch.tv/Windermake',
-        youtube: 'https://www.youtube.com/@Windermake1/featured',
+        twitch: 'https://www.twitch.tv/firelegendik',
+        youtube: '',
         videos: [
-            'https://youtu.be/1cvIghKFrcc?si=m0jGVUvWBTmsxAyS',
-            'https://youtu.be/3EjPyMlW_WI?si=j1uMnAhw0KR-5A-C',
-            'https://youtu.be/nfyYIWGLqFc?si=aWr9oEF13SmGvH3e'
+            'https://youtu.be/-lzmaAzTtNM?si=FVAz5AAkBp-0K7Ic'
         ],
-        merits: 'Перестал боятся критики.',
-        youtubeChannel:'https://www.youtube.com/@Windermake1/featured'
+        merits: 'Построил ферму кукол вуду Редди Бобра',
+        youtubeChannel: 'https://youtube.com/@firelegend08?si=A5KM8eHZJ0FAQJNi'
     }
 ];
